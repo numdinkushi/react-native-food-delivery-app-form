@@ -55,15 +55,14 @@ const AuthLayout = ({title, subtitle, titleContainerStyle, children}) => {
             style={{
                 textAlign: "center",
                 color: COLORS.darkGray,
-                margintTop: SIZES.base,
+                marginTop: SIZES.base,
                 ...FONTS.body3
             }}
         >
             {subtitle}
         </Text>
-        {children}
-
     </View>
+        {children}
     {/* Content / children */}
         </KeyboardAwareScrollView>
     </View>

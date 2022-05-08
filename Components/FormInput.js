@@ -1,16 +1,16 @@
-import { View, Text } from 'react-native'
+import { View, Text, TextInput } from 'react-native'
 import React from 'react'
-import {FONTS, SIZES} from "../constants"
+import {COLORS, FONTS, SIZES} from "../constants"
 const FormInput = ({
   containerStyle,
   label,
   placeholder,
   inputStyle,
-  perpendComponent,
+  prependComponent,
   appendComponent,
   onChange,
   secureTextEntry,
-  KeyboardType="default",
+  keyboardType="default",
   autoCompleteType= "off",
   autoCapitalize="none",
   errorMsg= "",
@@ -22,8 +22,8 @@ const FormInput = ({
       <View 
         style={{
           flexDirection: "row",
-          justifyContent: "center",}
-        }
+          justifyContent: "space-between",
+        }}
       >
         <Text
           style={{color:COLORS.gray, ...FONTS.body4}}
@@ -31,7 +31,7 @@ const FormInput = ({
           {label}
         </Text>
         <Text 
-          style={{errorMsg}}
+          style={{color:COLORS.red, ...FONTS.body4}}
         >
           {errorMsg}
         </Text>
@@ -42,10 +42,26 @@ const FormInput = ({
           flexDirection:"row",
            height: 55,
            paddingHorizontal:SIZES.padding,
+           marginTop:SIZES.base,
+           borderRadius: SIZES.radius,
            backgroundColor: COLORS.lightGray2
         }}
       >
-
+        {prependComponent}
+        <TextInput 
+            style={{
+              flex:1,
+              color: COLORS.black,
+              ...inputStyle
+            }}
+            placeholder={placeholder}
+             placeholderTextColor={COLORS.gray}
+            secureTextEntry={secureTextEntry}
+            keyboardType={keyboardType="default"}
+            autoCompleteType={autoCompleteType}
+            onChangeText={(text)=> onChange(text)}
+        />
+        {appendComponent}
       </View>
     </View>
   )
